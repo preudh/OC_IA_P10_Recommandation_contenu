@@ -1,0 +1,15 @@
+azure-functions
+azure-identity
+azure-storage-blob
+python-dotenv
+requests
+numpy
+pandas
+scikit-learn
+scipy
+matplotlib
+seaborn
+plotly
+surprise
+implicit
+streamlit

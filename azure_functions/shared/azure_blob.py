@@ -66,3 +66,5 @@ def load_clicks():
         clicks_df = pd.read_csv(f)
     return clicks_df
 
+
+

@@ -9,4 +9,7 @@ surprise
 implicit
 azure-functions
 azure-storage-blob
+azure-identity
+python-dotenv
+requests
 streamlit
