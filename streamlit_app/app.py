@@ -4,6 +4,11 @@ import requests
 import os
 from dotenv import load_dotenv
 
+# ✅ Importer la fonction load_clicks() depuis azure_blob.py
+#    Ajuste le chemin selon l'emplacement réel de azure_blob.py
+#    Par exemple : from azure_functions.shared.azure_blob import load_clicks
+from azure_functions.shared.azure_blob import load_clicks
+
 # ✅ Charger les variables d'environnement
 if os.path.exists(".env"):
     load_dotenv()
@@ -25,18 +30,15 @@ else:
     API_URL = "http://127.0.0.1:5000/api/recommend_articles"
     st.sidebar.warning("🖥️ Mode : **Local (Flask API)**")
 
-# ✅ Charger la liste des utilisateurs depuis un fichier CSV stocké
+# ✅ Charger la liste des utilisateurs depuis Azure Blob Storage
 @st.cache_data
 def load_users():
     try:
-        df = pd.read_csv("data/clicks_sample.csv")  # Vérifie que ce fichier existe dans `data/`
-        user_ids = df["user_id"].unique().tolist()
+        clicks_df = load_clicks()  # Lecture du CSV depuis le conteneur Blob
+        user_ids = clicks_df["user_id"].unique().tolist()
         return sorted(user_ids)
-    except FileNotFoundError:
-        st.error("❌ Fichier `data/clicks_sample.csv` introuvable.")
-        return []
     except Exception as e:
-        st.error(f"❌ Erreur lors du chargement des utilisateurs : {e}")
+        st.error(f"❌ Erreur lors du chargement du CSV depuis Azure Blob : {e}")
         return []
 
 # ✅ Interface utilisateur Streamlit
@@ -72,4 +74,5 @@ if st.button("🎯 Obtenir des recommandations"):
                 st.error("❌ Erreur : Délai d'attente dépassé pour l'API.")
             except requests.exceptions.RequestException as e:
                 st.error(f"❌ Erreur dans la récupération des recommandations : {e}")
+
 
