@@ -13,8 +13,8 @@ data/
 .DS_Store
 thumbs.db
 
-preudhomme_patrice_1_notebook_022025.ipynb
-/preudhomme_patrice_1_notebook_022025.ipynb
+#preudhomme_patrice_1_notebook_022025.ipynb
+#/preudhomme_patrice_1_notebook_022025.ipynb
 
 # User-specific stuff
 .idea/**/workspace.xml
