@@ -9,7 +9,6 @@ Bienvenue dans le dépôt **OC_IA_P10_Recommandation_contenu**. Ce dépôt conti
 L’objectif principal est de développer un système de recommandation capable de proposer des articles pertinents et personnalisés aux utilisateurs. Pour cela, j’explore diverses méthodes :  
 - **Filtrage collaboratif** (modèle ALS, etc.)  
 - **Filtrage basé sur le contenu** (approche exploratoire)  
-- **Approches hybrides** (possibilité de combiner plusieurs méthodes)
 
 ---
 
